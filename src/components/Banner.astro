@@ -1,0 +1,56 @@
+---
+// Interface Props para los datos
+interface Props {
+	title: string;
+	description: string;
+	buttons: Array<{ label: string; href: string }>;
+}
+
+const { buttons } = Astro.props;
+---
+
+<section class="button-group">
+	{buttons.map(button => (
+		<a href={button.href} class="banner-button">
+			{button.label}
+		</a>
+	))}
+</section>
+
+
+<style>
+	/* Grupo de botones */
+	.button-group {
+		display: flex;
+		justify-content: center;
+		gap: 1rem; /* Espaciado entre los botones */
+		margin: 2rem auto;
+		padding: 0;
+	}
+
+	/* Botones individuales */
+	.banner-button {
+		list-style: none;
+		padding: 0.75rem 1.5rem;
+		margin: 0;
+		border-radius: 10px;
+		background: rgba(0, 0, 0, 0.5);
+		color: white;
+		font-size: 1rem;
+		text-decoration: none;
+		display: inline-block;
+		box-shadow: 0 4px 8px rgba(241, 241, 240, 0.2);
+		transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+	}
+
+	.banner-button:hover {
+		transform: translateY(-5px); /* Eleva ligeramente el botón */
+		background: rgba(0, 0, 0, 0.5);
+		
+	}
+
+	/* Ajustes adicionales para el texto */
+	.banner-button:hover {
+		color: #FD7446FF; /* Cambia a un amarillo dorado al pasar el ratón */
+	}
+</style>
